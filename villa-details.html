@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Amaya Hills Kandy | Luxury Hotel Villas Sri Lanka - Booking.com</title>
+  <meta name="description" content="Book Amaya Hills Kandy with instant confirmation, best price guarantee, and no prepayment needed. Experience luxury hillside villas in Sri Lanka.">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'booking-navy': '#003580',
+            'booking-navy-dark': '#00224f',
+            'booking-blue': '#006ce4',
+            'booking-blue-hover': '#0057b8',
+            'booking-yellow': '#febb02',
+            'booking-green': '#008234',
+            'booking-red': '#d4111e',
+            'booking-muted': '#595959'
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Leaflet CSS for Interactive Map -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+  
+  <!-- Flatpickr CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body id="villa-details-root" class="bg-[#ffffff] text-gray-900 min-h-screen flex flex-col antialiased">
+
+  <!-- Booking.com Top Dark Blue Header -->
+  <header class="bg-booking-navy text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <a href="index.html" class="flex items-center gap-1.5 focus:outline-none">
+          <span class="text-2xl font-extrabold tracking-tight">Booking<span class="text-booking-blue font-bold">.com</span></span>
+          <span class="text-[10px] bg-booking-yellow text-booking-navy font-extrabold px-1.5 py-0.5 rounded tracking-wider uppercase ml-1">Sri Lanka</span>
+        </a>
+
+        <div class="flex items-center gap-2 sm:gap-4 text-sm font-semibold">
+          <button id="currency-btn" class="hover:bg-white/10 px-2.5 py-1.5 rounded transition flex items-center gap-1 text-xs sm:text-sm">
+            <span>LKR</span>
+          </button>
+          <button class="hover:bg-white/10 p-1.5 rounded transition flex items-center" title="English / Sri Lanka">
+            <span class="text-base">🇬🇧</span>
+          </button>
+          <button class="hover:bg-white/10 p-1.5 rounded transition text-sm" title="Help">
+            <i class="fa-regular fa-circle-question text-base"></i>
+          </button>
+          <a href="index.html#featured-villas-section" class="hidden md:inline-block hover:bg-white/10 px-3 py-1.5 rounded transition text-xs sm:text-sm">
+            List your property
+          </a>
+          <a href="register.html" class="bg-white text-booking-blue hover:bg-gray-100 px-3.5 py-1.5 rounded text-xs sm:text-sm font-bold transition shadow-xs">
+            Register
+          </a>
+          <a href="login.html" class="bg-white text-booking-blue hover:bg-gray-100 px-3.5 py-1.5 rounded text-xs sm:text-sm font-bold transition shadow-xs">
+            Sign in
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Sticky In-Page Navigation Sub-Bar (Screenshot 5) -->
+  <div class="border-b border-gray-200 bg-white sticky top-0 z-40 shadow-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <nav class="flex items-center gap-8 text-sm font-semibold overflow-x-auto no-scrollbar">
+        <a href="#overview" class="py-3.5 border-b-2 border-booking-blue text-booking-blue shrink-0">Overview</a>
+        <a href="#availability" class="py-3.5 border-b-2 border-transparent text-gray-600 hover:text-booking-blue hover:border-gray-300 transition shrink-0">Info & prices</a>
+        <a href="#facilities" class="py-3.5 border-b-2 border-transparent text-gray-600 hover:text-booking-blue hover:border-gray-300 transition shrink-0">Facilities</a>
+        <a href="#house-rules" class="py-3.5 border-b-2 border-transparent text-gray-600 hover:text-booking-blue hover:border-gray-300 transition shrink-0">House rules</a>
+        <a href="#nearby" class="py-3.5 border-b-2 border-transparent text-gray-600 hover:text-booking-blue hover:border-gray-300 transition shrink-0">Nearby locations</a>
+        <a href="#reviews" class="py-3.5 border-b-2 border-transparent text-gray-600 hover:text-booking-blue hover:border-gray-300 transition shrink-0">Guest reviews (544)</a>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Breadcrumbs Bar (Screenshot 5) -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 text-xs text-booking-muted">
+    <div id="villa-breadcrumb" class="flex items-center gap-2 flex-wrap">
+      <!-- Injected via JS -->
+    </div>
+  </div>
+
+  <!-- Main Container -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 space-y-8 flex-1 w-full">
+
+    <!-- Villa Header Section (Screenshot 5) -->
+    <section id="overview" class="space-y-3">
+      <div class="flex flex-col md:flex-row md:items-start justify-between gap-4">
+        <!-- Title, Badges & Address -->
+        <div class="space-y-1">
+          <div class="flex items-center gap-2">
+            <div id="villa-stars" class="flex text-booking-yellow text-sm">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <span class="bg-booking-yellow text-booking-navy font-bold text-[10px] px-1.5 py-0.5 rounded ml-1"><i class="fa-solid fa-thumbs-up"></i></span>
+            </div>
+          </div>
+
+          <h1 id="villa-title" class="text-2xl sm:text-3xl font-extrabold text-gray-900 tracking-tight">
+            Amaya Hills Kandy
+          </h1>
+
+          <p id="villa-address" class="text-xs text-gray-600 flex items-center gap-1.5 flex-wrap">
+            <i class="fa-solid fa-location-dot text-booking-blue"></i>
+            <span>Heerassagala 20000 Kandy, 20000 Kandy, Sri Lanka</span> – 
+            <a href="#map-section" class="text-booking-blue font-semibold hover:underline">Excellent location - show on map</a>
+          </p>
+        </div>
+
+        <!-- Action CTAs (Heart, Share, Reserve) -->
+        <div class="flex items-center gap-2 shrink-0">
+          <button class="fav-btn p-2.5 rounded-lg border border-gray-200 text-booking-blue hover:bg-gray-50 transition shadow-2xs" title="Save to wishlist">
+            <i class="fa-regular fa-heart text-base"></i>
+          </button>
+          <button class="share-btn p-2.5 rounded-lg border border-gray-200 text-booking-blue hover:bg-gray-50 transition shadow-2xs" title="Share property">
+            <i class="fa-solid fa-share-nodes text-base"></i>
+          </button>
+          <a href="#availability" class="bg-booking-blue hover:bg-booking-blue-hover text-white font-bold py-2.5 px-6 rounded text-sm transition shadow-xs">
+            Reserve
+          </a>
+        </div>
+      </div>
+
+      <!-- We Price Match Badge -->
+      <div class="flex items-center gap-1 text-xs text-booking-blue font-semibold">
+        <i class="fa-solid fa-tag"></i>
+        <span>We Price Match</span>
+      </div>
+
+      <!-- Photo Gallery Grid & Reviews Card (Exact Screenshot 5 Layout) -->
+      <div class="grid grid-cols-1 lg:grid-cols-4 gap-3 pt-2">
+        <!-- 3-Column Photo Gallery Grid (Hero + 4 thumbnails) -->
+        <div class="lg:col-span-3">
+          <div id="villa-gallery-grid" class="grid grid-cols-2 md:grid-cols-3 gap-2 h-auto md:h-[370px]">
+            <!-- Injected via JS -->
+          </div>
+        </div>
+
+        <!-- Right Side: Review Score & Location Mini-Card -->
+        <div class="lg:col-span-1 flex flex-col justify-between gap-3">
+          <!-- Review Score Card -->
+          <div id="villa-review-card" class="bg-white border border-gray-200 rounded-lg p-4 shadow-2xs">
+            <!-- Injected via JS -->
+          </div>
+
+          <!-- Mini Map Card with "Show on map" button (Screenshot 5) -->
+          <div class="relative rounded-lg overflow-hidden border border-gray-200 h-36 group cursor-pointer" onclick="document.getElementById('map-section').scrollIntoView({behavior:'smooth'})">
+            <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&w=500&q=80" alt="Map Preview" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+            <div class="absolute inset-0 bg-booking-navy/20 flex flex-col items-center justify-center p-2 text-center">
+              <div class="bg-booking-blue text-white font-bold text-xs py-1.5 px-4 rounded shadow-md group-hover:bg-booking-blue-hover transition flex items-center gap-1.5">
+                <i class="fa-solid fa-location-dot"></i>
+                <span>Show on map</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Availability Search Bar Widget (Screenshot 3) -->
+    <section id="availability" class="scroll-mt-16">
+      <div class="flex items-center justify-between mb-3">
+        <div>
+          <h2 class="text-2xl font-extrabold text-gray-900">Availability</h2>
+          <p class="text-xs text-booking-muted mt-0.5">Prices converted to LKR <i class="fa-solid fa-circle-info text-booking-blue ml-0.5"></i></p>
+        </div>
+        <div class="text-xs text-booking-blue font-semibold flex items-center gap-1">
+          <i class="fa-solid fa-tag"></i>
+          <span>We Price Match</span>
+        </div>
+      </div>
+
+      <!-- Yellow border Search Ribbon -->
+      <div class="bg-booking-yellow rounded-lg p-1 shadow-sm mb-4">
+        <div class="bg-white rounded-md grid grid-cols-1 md:grid-cols-12 gap-1 p-1 items-center">
+          <!-- Dates -->
+          <div class="md:col-span-5 relative flex items-center px-3 py-2 border-b md:border-b-0 md:border-r border-gray-200">
+            <i class="fa-regular fa-calendar-days text-gray-400 text-base mr-3"></i>
+            <div class="w-full relative">
+              <label class="block text-[10px] uppercase font-bold text-gray-400">Select dates</label>
+              <div id="date-range-display" class="font-bold text-gray-800 text-xs sm:text-sm truncate">
+                Fri 18 Sept — Sat 19 Sept
+              </div>
+              <input type="text" id="date-range-input" class="absolute inset-0 opacity-0 cursor-pointer w-full h-full">
+            </div>
+          </div>
+
+          <!-- Occupancy -->
+          <div class="md:col-span-4 relative px-3 py-2 cursor-pointer border-b md:border-b-0 md:border-r border-gray-200" id="occupancy-btn">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-2">
+                <i class="fa-regular fa-user text-gray-400 text-base"></i>
+                <div>
+                  <label class="block text-[10px] uppercase font-bold text-gray-400">Select occupancy</label>
+                  <div id="occupancy-text" class="font-bold text-gray-800 text-xs sm:text-sm truncate">
+                    2 adults · 0 children · 1 room
+                  </div>
+                </div>
+              </div>
+              <i class="fa-solid fa-chevron-down text-xs text-gray-400"></i>
+            </div>
+
+            <!-- Popover -->
+            <div id="occupancy-popover" class="hidden absolute top-full left-0 right-0 mt-2 bg-white rounded-lg shadow-xl border border-gray-200 p-4 z-50 animate-fade-in w-72">
+              <div class="flex items-center justify-between py-2 border-b border-gray-100 text-xs">
+                <span class="font-bold text-gray-800">Adults</span>
+                <div class="flex items-center gap-3">
+                  <button type="button" id="adult-minus" class="w-7 h-7 rounded border border-booking-blue text-booking-blue font-bold flex items-center justify-center">-</button>
+                  <span id="adult-count" class="font-bold text-sm">2</span>
+                  <button type="button" id="adult-plus" class="w-7 h-7 rounded border border-booking-blue text-booking-blue font-bold flex items-center justify-center">+</button>
+                </div>
+              </div>
+              <div class="flex items-center justify-between py-2 border-b border-gray-100 text-xs">
+                <span class="font-bold text-gray-800">Children</span>
+                <div class="flex items-center gap-3">
+                  <button type="button" id="child-minus" class="w-7 h-7 rounded border border-booking-blue text-booking-blue font-bold flex items-center justify-center">-</button>
+                  <span id="child-count" class="font-bold text-sm">0</span>
+                  <button type="button" id="child-plus" class="w-7 h-7 rounded border border-booking-blue text-booking-blue font-bold flex items-center justify-center">+</button>
+                </div>
+              </div>
+              <div class="flex items-center justify-between py-2 text-xs">
+                <span class="font-bold text-gray-800">Rooms</span>
+                <div class="flex items-center gap-3">
+                  <button type="button" id="room-minus" class="w-7 h-7 rounded border border-booking-blue text-booking-blue font-bold flex items-center justify-center">-</button>
+                  <span id="room-count" class="font-bold text-sm">1</span>
+                  <button type="button" id="room-plus" class="w-7 h-7 rounded border border-booking-blue text-booking-blue font-bold flex items-center justify-center">+</button>
+                </div>
+              </div>
+              <button type="button" id="occupancy-done-btn" class="w-full mt-2 bg-booking-blue hover:bg-booking-blue-hover text-white font-bold py-1.5 rounded text-xs">Done</button>
+            </div>
+          </div>
+
+          <!-- Change Search CTA -->
+          <div class="md:col-span-3 p-1">
+            <button id="main-search-btn" class="w-full bg-booking-blue hover:bg-booking-blue-hover text-white font-bold py-2.5 px-4 rounded text-xs sm:text-sm transition">
+              Change search
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Filter by Meals Pill (Screenshot 3) -->
+      <div class="flex items-center gap-2 mb-4 text-xs font-semibold text-gray-700">
+        <span>Filter by:</span>
+        <button class="bg-gray-100 hover:bg-gray-200 px-3 py-1.5 rounded-full border border-gray-300 flex items-center gap-1.5 transition">
+          <span>Meals</span>
+          <i class="fa-solid fa-chevron-down text-[10px] text-gray-500"></i>
+        </button>
+        <button class="bg-gray-100 hover:bg-gray-200 px-3 py-1.5 rounded-full border border-gray-300 flex items-center gap-1.5 transition">
+          <span>Room type</span>
+          <i class="fa-solid fa-chevron-down text-[10px] text-gray-500"></i>
+        </button>
+      </div>
+
+      <!-- Recommended Room Promo Banner (Screenshot 4) -->
+      <div id="recommended-room-banner" class="mb-6">
+        <!-- Injected via JS -->
+      </div>
+
+      <!-- Genius Discounts Banner (Screenshot 3) -->
+      <div class="bg-blue-50 border border-blue-200 rounded-lg p-3.5 flex items-center gap-3 mb-4">
+        <i class="fa-solid fa-tag text-booking-blue text-lg"></i>
+        <div class="text-xs text-gray-800">
+          <span class="font-bold text-booking-navy">Check for Genius discounts:</span> 
+          <a href="login.html" class="text-booking-blue font-semibold hover:underline">Sign in</a> to see if deals at this property are available for your booked dates.
+        </div>
+      </div>
+
+      <!-- Room Availability Matrix Table (Exact Match to Screenshot 3) -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-4">
+        <!-- Table on Left (9 Columns) -->
+        <div class="lg:col-span-9 overflow-x-auto">
+          <table class="w-full border-collapse availability-table text-left bg-white rounded-lg overflow-hidden border border-gray-200 text-xs">
+            <thead>
+              <tr>
+                <th class="py-3 px-3">Room type</th>
+                <th class="py-3 px-2 text-center">Number of guests</th>
+                <th class="py-3 px-3">Today's price</th>
+                <th class="py-3 px-3">Your choices</th>
+                <th class="py-3 px-2 text-center">Select amount</th>
+              </tr>
+            </thead>
+            <tbody id="availability-table-body">
+              <!-- Dynamically rendered via JS -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Sticky Right Side Summary Box (Exact Match to Screenshot 3) -->
+        <div class="lg:col-span-3">
+          <div class="sticky-reserve-panel bg-white border border-gray-200 rounded-lg p-4 shadow-sm space-y-4">
+            <div>
+              <div id="sticky-summary-text" class="font-bold text-gray-900 text-sm">
+                1 room for 1 night
+              </div>
+              <div class="mt-1">
+                <span id="sticky-strike-price" class="text-xs text-booking-red line-through font-semibold block"></span>
+                <span id="sticky-total-price" class="text-2xl font-extrabold text-gray-900 block">LKR 28,130</span>
+                <span id="sticky-total-taxes" class="text-[11px] text-booking-muted block">+LKR 9,086 taxes and charges</span>
+              </div>
+            </div>
+
+            <button id="sticky-reserve-btn" class="w-full bg-booking-blue hover:bg-booking-blue-hover text-white font-bold py-3 px-4 rounded text-sm transition shadow-sm flex items-center justify-center gap-2">
+              <span>I'll reserve</span>
+              <i class="fa-solid fa-chevron-right text-xs"></i>
+            </button>
+
+            <div class="text-[11px] text-booking-muted space-y-1">
+              <p>• You'll be taken to the next step</p>
+              <p>• You won't be charged yet</p>
+              <p class="text-booking-green font-semibold">• Instant confirmation</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Property Highlights & Full Description Row (Screenshot 4) -->
+    <section class="grid grid-cols-1 lg:grid-cols-12 gap-6 pt-4 border-t border-gray-200">
+      <!-- Left Column: Description & World-class service -->
+      <div class="lg:col-span-8 space-y-4 text-xs sm:text-sm text-gray-700 leading-relaxed">
+        <h3 class="text-lg font-bold text-gray-900">Experience world-class service at Amaya Hills Kandy</h3>
+        <p>
+          Located in Kandy, Amaya Hills, a leading 5-star hotel in Kandy, offers a hillside retreat overlooking the Heerassagala forest. Known as one of the best luxury hotels in Kandy, this hotel features traditional Sri Lankan architecture, an outdoor pool, a spa and a restaurant.
+        </p>
+        <p>
+          This Kandy hotel also offers air-conditioned rooms, including private balconies with mountain or valley views. Rooms are fitted with attached bathrooms with bathtubs, flat-screen TV and minibar.
+        </p>
+        <p>
+          Guests can work out at the fitness center or play a game of squash or billiards. Amaya Hills provides laundry service, tour desk and currency exchange.
+        </p>
+
+        <!-- Facilities Section -->
+        <div id="facilities" class="pt-6 scroll-mt-16">
+          <h4 class="font-bold text-gray-900 text-base mb-3">Most popular facilities</h4>
+          <div id="villa-facilities-list" class="grid grid-cols-2 sm:grid-cols-3 gap-2">
+            <!-- Injected via JS -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Property Highlights Box (Screenshot 4) -->
+      <div class="lg:col-span-4" id="villa-highlights-sidebar">
+        <!-- Injected via JS -->
+      </div>
+    </section>
+
+    <!-- Nearby Trending Locations Section -->
+    <section id="nearby" class="pt-6 border-t border-gray-200 scroll-mt-16">
+      <div class="flex items-center justify-between mb-4">
+        <div>
+          <h3 class="text-xl font-extrabold text-gray-900">Nearby famous locations & attractions</h3>
+          <p class="text-xs text-booking-muted mt-0.5">Explore key historical sites, mountain peaks and cultural landmarks around the villa</p>
+        </div>
+      </div>
+      <div id="villa-nearby-locations-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+        <!-- Injected via JS -->
+      </div>
+    </section>
+
+    <!-- Guest Reviews Section -->
+    <section id="reviews" class="pt-6 border-t border-gray-200 scroll-mt-16">
+      <div class="flex items-center justify-between mb-4">
+        <div>
+          <h3 class="text-xl font-extrabold text-gray-900">Guest reviews</h3>
+          <p class="text-xs text-booking-muted mt-0.5">Read real reviews from travelers who stayed at this villa</p>
+        </div>
+      </div>
+
+      <!-- Review breakdown scores -->
+      <div class="bg-gray-50 p-4 rounded-lg border border-gray-200 mb-6 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 text-xs">
+        <div>
+          <div class="flex justify-between font-bold text-gray-800 mb-1">
+            <span>Cleanliness</span>
+            <span>8.8</span>
+          </div>
+          <div class="w-full bg-gray-200 rounded-full h-1.5"><div class="bg-booking-blue h-1.5 rounded-full" style="width: 88%"></div></div>
+        </div>
+        <div>
+          <div class="flex justify-between font-bold text-gray-800 mb-1">
+            <span>Comfort</span>
+            <span>8.7</span>
+          </div>
+          <div class="w-full bg-gray-200 rounded-full h-1.5"><div class="bg-booking-blue h-1.5 rounded-full" style="width: 87%"></div></div>
+        </div>
+        <div>
+          <div class="flex justify-between font-bold text-gray-800 mb-1">
+            <span>Location</span>
+            <span>9.1</span>
+          </div>
+          <div class="w-full bg-gray-200 rounded-full h-1.5"><div class="bg-booking-blue h-1.5 rounded-full" style="width: 91%"></div></div>
+        </div>
+        <div>
+          <div class="flex justify-between font-bold text-gray-800 mb-1">
+            <span>Facilities</span>
+            <span>8.5</span>
+          </div>
+          <div class="w-full bg-gray-200 rounded-full h-1.5"><div class="bg-booking-blue h-1.5 rounded-full" style="width: 85%"></div></div>
+        </div>
+        <div>
+          <div class="flex justify-between font-bold text-gray-800 mb-1">
+            <span>Staff</span>
+            <span>9.2</span>
+          </div>
+          <div class="w-full bg-gray-200 rounded-full h-1.5"><div class="bg-booking-blue h-1.5 rounded-full" style="width: 92%"></div></div>
+        </div>
+        <div>
+          <div class="flex justify-between font-bold text-gray-800 mb-1">
+            <span>Value</span>
+            <span>8.4</span>
+          </div>
+          <div class="w-full bg-gray-200 rounded-full h-1.5"><div class="bg-booking-blue h-1.5 rounded-full" style="width: 84%"></div></div>
+        </div>
+      </div>
+
+      <div id="villa-reviews-container" class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <!-- Injected via JS -->
+      </div>
+
+      <div class="mt-6 bg-blue-50 border border-blue-100 rounded-lg p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div>
+          <h4 class="font-extrabold text-gray-900 text-sm">Stayed with us?</h4>
+          <p class="text-xs text-booking-muted mt-1">Share your experience and help other travelers choose their stay.</p>
+        </div>
+        <button type="button" onclick="openReviewModal()" class="shrink-0 bg-booking-blue hover:bg-booking-blue-hover text-white font-bold text-xs px-4 py-2.5 rounded transition">
+          <i class="fa-solid fa-pen-to-square mr-1"></i> Write a review
+        </button>
+      </div>
+    </section>
+
+    <!-- House Rules Section -->
+    <section id="house-rules" class="pt-6 border-t border-gray-200 scroll-mt-16">
+      <h3 class="text-xl font-extrabold text-gray-900 mb-4">House rules</h3>
+      <div class="bg-white border border-gray-200 rounded-lg p-4 space-y-3 text-xs text-gray-700">
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 py-2 border-b border-gray-100">
+          <span class="font-bold text-gray-900 flex items-center gap-2"><i class="fa-solid fa-arrow-right-to-bracket text-booking-blue"></i> Check-in</span>
+          <span class="sm:col-span-2">From 14:00 to 23:30 (24-hour reception available)</span>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 py-2 border-b border-gray-100">
+          <span class="font-bold text-gray-900 flex items-center gap-2"><i class="fa-solid fa-arrow-right-from-bracket text-booking-blue"></i> Check-out</span>
+          <span class="sm:col-span-2">Until 12:00 PM (Late check-out available upon request)</span>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 py-2 border-b border-gray-100">
+          <span class="font-bold text-gray-900 flex items-center gap-2"><i class="fa-solid fa-child text-booking-blue"></i> Children & Beds</span>
+          <span class="sm:col-span-2">Children of all ages are welcome. Extra beds and baby cots available on request.</span>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 py-2">
+          <span class="font-bold text-gray-900 flex items-center gap-2"><i class="fa-solid fa-credit-card text-booking-blue"></i> Payment Methods</span>
+          <span class="sm:col-span-2">Cash (LKR/USD/EUR), Visa, Mastercard, American Express. No prepayment required!</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Location Map Section (Leaflet Interactive Map) -->
+    <section id="map-section" class="pt-6 border-t border-gray-200 scroll-mt-16">
+      <div class="flex items-center justify-between mb-3">
+        <div>
+          <h3 class="text-xl font-extrabold text-gray-900">Villa Location & Surroundings</h3>
+          <p class="text-xs text-booking-muted mt-0.5">Interactive map showing the villa location and nearby Sri Lankan landmarks</p>
+        </div>
+      </div>
+      <div class="border border-gray-200 rounded-lg overflow-hidden shadow-xs h-96 w-full relative z-10" id="villa-detail-map">
+        <!-- Rendered via Leaflet JS -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Easy Reservation Modal (Non-Advanced, Simple & Fast) -->
+  <div id="easy-booking-modal" class="hidden fixed inset-0 z-50 overflow-y-auto lightbox-backdrop flex items-center justify-center p-4">
+    <div class="bg-white rounded-xl shadow-2xl max-w-lg w-full overflow-hidden border border-gray-200 animate-fade-in">
+      <!-- Modal Header -->
+      <div class="bg-booking-navy text-white px-6 py-4 flex items-center justify-between">
+        <div>
+          <h3 class="text-lg font-extrabold">Instant Reservation</h3>
+          <p class="text-xs text-blue-200">Complete your stay at <span id="booking-modal-villa-name" class="font-semibold">Amaya Hills Kandy</span></p>
+        </div>
+        <button onclick="closeBookingModal()" class="text-white/80 hover:text-white text-xl">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <!-- Booking Form Step -->
+      <div id="booking-form-step" class="p-6 space-y-4 text-xs">
+        <!-- Selected Summary -->
+        <div class="bg-blue-50 rounded-lg p-3 border border-blue-100 space-y-1.5">
+          <div class="flex justify-between">
+            <span class="text-booking-muted">Dates:</span>
+            <span id="booking-modal-dates" class="font-bold text-gray-800">Fri 18 Sept — Sat 19 Sept</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-booking-muted">Guests:</span>
+            <span id="booking-modal-guests" class="font-bold text-gray-800">2 Adults · 1 Room</span>
+          </div>
+          <div id="booking-modal-room-summary" class="pt-2 border-t border-blue-200 space-y-1">
+            <!-- Injected via JS -->
+          </div>
+          <div class="flex justify-between pt-2 border-t border-blue-200 font-extrabold text-sm text-gray-900">
+            <span>Total Payable:</span>
+            <div class="text-right">
+              <span id="booking-modal-total" class="text-booking-blue">LKR 28,130</span>
+              <span id="booking-modal-taxes" class="block text-[10px] text-booking-muted font-normal">+LKR 9,086 taxes</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Guest Details Form -->
+        <form onsubmit="submitEasyReservation(event)" class="space-y-3">
+          <div>
+            <label class="block font-bold text-gray-700 mb-1">Lead Guest Full Name *</label>
+            <input type="text" id="guest-name" required placeholder="e.g. Chathura Karunarathna" class="w-full px-3 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-booking-blue outline-none text-xs">
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div>
+              <label class="block font-bold text-gray-700 mb-1">Email Address (for confirmation) *</label>
+              <input type="email" id="guest-email" required placeholder="name@example.com" class="w-full px-3 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-booking-blue outline-none text-xs">
+            </div>
+            <div>
+              <label class="block font-bold text-gray-700 mb-1">Phone / WhatsApp Number</label>
+              <input type="tel" id="guest-phone" placeholder="+94 77 123 4567" class="w-full px-3 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-booking-blue outline-none text-xs">
+            </div>
+          </div>
+
+          <div>
+            <label class="block font-bold text-gray-700 mb-1">Special Requests (Optional)</label>
+            <textarea id="guest-requests" rows="2" placeholder="e.g. High floor, airport pickup arrangement, late arrival..." class="w-full px-3 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-booking-blue outline-none text-xs"></textarea>
+          </div>
+
+          <div class="bg-green-50 text-booking-green p-2.5 rounded border border-green-200 text-[11px] font-semibold flex items-center gap-2">
+            <i class="fa-solid fa-shield-check text-sm"></i>
+            <span>No prepayment needed! You will pay directly in LKR upon arrival at the villa.</span>
+          </div>
+
+          <button type="submit" class="w-full bg-booking-blue hover:bg-booking-blue-hover text-white font-bold py-3 rounded text-sm transition shadow-sm">
+            Confirm Instant Reservation
+          </button>
+        </form>
+      </div>
+
+      <!-- Booking Success Step -->
+      <div id="booking-success-step" class="hidden p-6 space-y-4 text-center">
+        <div class="w-16 h-16 bg-green-100 text-booking-green rounded-full flex items-center justify-center text-3xl mx-auto shadow-sm">
+          <i class="fa-solid fa-circle-check"></i>
+        </div>
+
+        <div>
+          <h4 class="text-xl font-extrabold text-gray-900">Reservation Confirmed!</h4>
+          <p class="text-xs text-gray-500 mt-1">We have sent the confirmation voucher to your email.</p>
+        </div>
+
+        <div class="bg-gray-50 rounded-lg p-4 border border-gray-200 text-left space-y-2 text-xs">
+          <div class="flex justify-between border-b border-gray-200 pb-1.5">
+            <span class="text-gray-500">Booking Reference:</span>
+            <span id="booking-reference-id" class="font-extrabold text-booking-blue">SL-BK-892401</span>
+          </div>
+          <div class="flex justify-between border-b border-gray-200 pb-1.5">
+            <span class="text-gray-500">Guest Name:</span>
+            <span id="confirmed-guest-name" class="font-bold text-gray-800">Chathura Karunarathna</span>
+          </div>
+          <div class="flex justify-between border-b border-gray-200 pb-1.5">
+            <span class="text-gray-500">Payment Status:</span>
+            <span class="font-bold text-booking-green">Pay at Villa (LKR)</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-gray-500">Cancellation:</span>
+            <span class="font-semibold text-gray-700">Free Cancellation</span>
+          </div>
+        </div>
+
+        <div class="flex gap-2">
+          <button onclick="window.print()" class="flex-1 bg-gray-100 hover:bg-gray-200 text-gray-800 font-bold py-2.5 rounded text-xs transition">
+            <i class="fa-solid fa-print mr-1"></i> Print Voucher
+          </button>
+          <button onclick="openReviewFromReservation()" class="flex-1 bg-booking-yellow hover:bg-yellow-500 text-booking-navy font-bold py-2.5 rounded text-xs transition">
+            <i class="fa-solid fa-star mr-1"></i> Write a review
+          </button>
+        </div>
+        <button onclick="resetBookingModal()" class="w-full text-booking-blue hover:underline text-xs font-bold">Done for now</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Guest Review Modal -->
+  <div id="review-modal" class="hidden fixed inset-0 z-[60] overflow-y-auto lightbox-backdrop flex items-center justify-center p-4">
+    <div class="bg-white rounded-xl shadow-2xl max-w-2xl w-full overflow-hidden border border-gray-200 animate-fade-in">
+      <div class="bg-booking-navy text-white px-6 py-4 flex items-center justify-between">
+        <div>
+          <h3 class="text-lg font-extrabold">Share your stay</h3>
+          <p class="text-xs text-blue-200">Your verified feedback helps future LodgeVilla guests.</p>
+        </div>
+        <button type="button" onclick="closeReviewModal()" class="text-white/80 hover:text-white text-xl"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <form id="review-form" onsubmit="submitClientReview(event)" class="p-6 space-y-4 text-xs">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div><label class="block font-bold text-gray-700 mb-1">Your name *</label><input id="review-author-name" name="authorName" required class="w-full px-3 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-booking-blue outline-none" placeholder="e.g. Chathura Karunarathna"></div>
+          <div><label class="block font-bold text-gray-700 mb-1">Country *</label><input id="review-author-country" name="authorCountry" required value="Sri Lanka" class="w-full px-3 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-booking-blue outline-none"></div>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div><label class="block font-bold text-gray-700 mb-1">Stayed during *</label><input id="review-stay-date" name="stayDate" type="month" required class="w-full px-3 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-booking-blue outline-none"></div>
+          <div><label class="block font-bold text-gray-700 mb-1">Review title *</label><input name="reviewTitle" required class="w-full px-3 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-booking-blue outline-none" placeholder="A memorable stay in Kandy"></div>
+        </div>
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 bg-gray-50 border border-gray-200 rounded-lg p-3">
+          <label class="font-bold text-gray-700">Overall score *<select name="score" required class="block w-full mt-1 px-2 py-2 border border-gray-300 rounded bg-white"><option value="10">10 - Exceptional</option><option value="9">9 - Superb</option><option value="8">8 - Very good</option><option value="7">7 - Good</option><option value="6">6 - Pleasant</option></select></label>
+          <label class="font-bold text-gray-700">Cleanliness<select name="cleanlinessScore" class="block w-full mt-1 px-2 py-2 border border-gray-300 rounded bg-white"><option>9</option><option>10</option><option>8</option><option>7</option></select></label>
+          <label class="font-bold text-gray-700">Comfort<select name="comfortScore" class="block w-full mt-1 px-2 py-2 border border-gray-300 rounded bg-white"><option>9</option><option>10</option><option>8</option><option>7</option></select></label>
+          <label class="font-bold text-gray-700">Location<select name="locationScore" class="block w-full mt-1 px-2 py-2 border border-gray-300 rounded bg-white"><option>9</option><option>10</option><option>8</option><option>7</option></select></label>
+          <label class="font-bold text-gray-700">Facilities<select name="facilitiesScore" class="block w-full mt-1 px-2 py-2 border border-gray-300 rounded bg-white"><option>9</option><option>10</option><option>8</option><option>7</option></select></label>
+          <label class="font-bold text-gray-700">Staff<select name="staffScore" class="block w-full mt-1 px-2 py-2 border border-gray-300 rounded bg-white"><option>9</option><option>10</option><option>8</option><option>7</option></select></label>
+        </div>
+        <div><label class="block font-bold text-gray-700 mb-1">Tell us about your stay *</label><textarea name="reviewText" rows="4" required class="w-full px-3 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-booking-blue outline-none" placeholder="What did you enjoy? What should future guests know?"></textarea></div>
+        <label class="flex items-center gap-2 text-gray-600"><input name="isVerified" type="checkbox" checked class="w-4 h-4 text-booking-blue"> I completed a stay at this property</label>
+        <div class="flex justify-end gap-2 pt-2 border-t border-gray-100"><button type="button" onclick="closeReviewModal()" class="bg-gray-100 hover:bg-gray-200 text-gray-700 font-bold px-4 py-2.5 rounded">Cancel</button><button type="submit" class="bg-booking-blue hover:bg-booking-blue-hover text-white font-bold px-5 py-2.5 rounded"><i class="fa-solid fa-paper-plane mr-1"></i> Submit review</button></div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Fullscreen Photo Gallery Lightbox Modal -->
+  <div id="gallery-lightbox-modal" class="hidden fixed inset-0 z-50 lightbox-backdrop flex flex-col justify-between p-4 sm:p-6 text-white animate-fade-in">
+    <!-- Top Bar -->
+    <div class="flex items-center justify-between pb-3 border-b border-white/20">
+      <span id="lightbox-counter" class="text-sm font-bold text-white/90">1 / 8</span>
+      <button onclick="closeLightbox()" class="text-white hover:text-booking-yellow text-2xl transition">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+
+    <!-- Main Active Photo Display -->
+    <div class="relative flex-1 flex items-center justify-center my-4">
+      <button onclick="prevLightboxImage()" class="absolute left-2 sm:left-6 bg-black/60 hover:bg-black p-3 rounded-full text-white text-lg transition z-10">
+        <i class="fa-solid fa-chevron-left"></i>
+      </button>
+
+      <img id="lightbox-main-img" src="" alt="Villa Photo" class="max-h-[75vh] max-w-full rounded-lg shadow-2xl object-contain">
+
+      <button onclick="nextLightboxImage()" class="absolute right-2 sm:right-6 bg-black/60 hover:bg-black p-3 rounded-full text-white text-lg transition z-10">
+        <i class="fa-solid fa-chevron-right"></i>
+      </button>
+    </div>
+
+    <!-- Bottom Thumbnails Strip -->
+    <div id="lightbox-thumbnails" class="flex gap-2 overflow-x-auto justify-center py-2 no-scrollbar">
+      <!-- Injected via JS -->
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-booking-navy text-white text-xs mt-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div>
+          <h4 class="font-bold text-white text-sm mb-3">Sri Lanka Regions</h4>
+          <ul class="space-y-1.5 text-gray-300">
+            <li><a href="index.html" class="hover:underline">Down South Villas</a></li>
+            <li><a href="index.html" class="hover:underline">Kandy Hill Country</a></li>
+            <li><a href="index.html" class="hover:underline">Galle Fort Heritage</a></li>
+            <li><a href="index.html" class="hover:underline">Kalutara Coast</a></li>
+            <li><a href="index.html" class="hover:underline">Anuradhapura Lodges</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-bold text-white text-sm mb-3">Popular Facilities</h4>
+          <ul class="space-y-1.5 text-gray-300">
+            <li><a href="#" class="hover:underline">Private Infinity Pools</a></li>
+            <li><a href="#" class="hover:underline">Ayurvedic Spa & Wellness</a></li>
+            <li><a href="#" class="hover:underline">Beachfront Sunsets</a></li>
+            <li><a href="#" class="hover:underline">Free Airport Transfers</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-bold text-white text-sm mb-3">Support</h4>
+          <ul class="space-y-1.5 text-gray-300">
+            <li><a href="#" class="hover:underline">Manage My Booking</a></li>
+            <li><a href="#" class="hover:underline">Customer Service Help</a></li>
+            <li><a href="#" class="hover:underline">Safety Resource Center</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-bold text-white text-sm mb-3">About Booking.com</h4>
+          <ul class="space-y-1.5 text-gray-300">
+            <li><a href="index.html" class="hover:underline">About Lanka Villas</a></li>
+            <li><a href="register.html" class="hover:underline">List your property</a></li>
+            <li><a href="login.html" class="hover:underline">Genius Loyalty Rewards</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="mt-8 pt-6 border-t border-white/10 text-center text-gray-400">
+        Copyright © 1996–2026 Booking.com™. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <!-- Flatpickr JS -->
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <!-- App Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/map.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
